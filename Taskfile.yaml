@@ -1,0 +1,18 @@
+version: '3'
+
+tasks:
+  dev:
+    desc: Run the MCP server in development mode
+    cmd: go run ./cmd/markdown-writer-mcp
+
+  build:
+    desc: Build the MCP server binary
+    cmd: go build -o bin/markdown-writer-mcp ./cmd/markdown-writer-mcp
+
+  test:
+    desc: Run all tests
+    cmd: go test ./...
+
+  tidy:
+    desc: Tidy Go modules
+    cmd: go mod tidy
