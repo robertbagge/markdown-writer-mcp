@@ -25,4 +25,13 @@ var (
 
 	// ErrReadFailed indicates a file read operation failed
 	ErrReadFailed = errors.New("read operation failed")
+
+	// ErrNotAnArray indicates the target path does not contain a JSON array
+	ErrNotAnArray = errors.New("target path is not a JSON array")
+
+	// ErrArrayPathNotFound indicates the arrayPath does not exist in the JSON
+	ErrArrayPathNotFound = errors.New("array path not found")
+
+	// ErrInvalidFilter indicates a filter configuration is invalid
+	ErrInvalidFilter = errors.New("invalid filter configuration")
 )
