@@ -19,4 +19,10 @@ var (
 
 	// ErrDirCreateFailed indicates directory creation failed
 	ErrDirCreateFailed = errors.New("directory creation failed")
+
+	// ErrInvalidJSON indicates the content is not valid JSON
+	ErrInvalidJSON = errors.New("invalid JSON content")
+
+	// ErrReadFailed indicates a file read operation failed
+	ErrReadFailed = errors.New("read operation failed")
 )

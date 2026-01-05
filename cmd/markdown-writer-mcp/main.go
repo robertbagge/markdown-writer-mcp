@@ -5,6 +5,7 @@ import (
 	"log/slog"
 	"os"
 
+	"github.com/robertbagge/markdown-writer-mcp/internal/reader"
 	"github.com/robertbagge/markdown-writer-mcp/internal/tools"
 	"github.com/robertbagge/markdown-writer-mcp/internal/verifier"
 	"github.com/robertbagge/markdown-writer-mcp/internal/writer"
@@ -20,10 +21,12 @@ func main() {
 	// Wire dependencies (constructor injection following DIP)
 	fileWriter := writer.NewOSFileWriter()
 	fileVerifier := verifier.NewOSFileVerifier()
+	fileReader := reader.NewOSFileReader()
 
 	// Inject dependencies into tools
 	tools.SetFileWriter(fileWriter)
 	tools.SetFileVerifier(fileVerifier)
+	tools.SetFileReader(fileReader)
 
 	// Create MCP server instance
 	server := mcp.NewServer(
