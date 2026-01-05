@@ -121,4 +121,16 @@ func TestOSFileReader_Read(t *testing.T) {
 			t.Errorf("Read() content = %v, want %v", got, content)
 		}
 	})
+
+	t.Run("context cancelled", func(t *testing.T) {
+		ctx, cancel := context.WithCancel(context.Background())
+		cancel() // Cancel immediately
+
+		r := reader.NewOSFileReader()
+		_, err := r.Read(ctx, filepath.Join(tmpDir, "any.json"))
+
+		if !errors.Is(err, context.Canceled) {
+			t.Errorf("Read() error = %v, want context.Canceled", err)
+		}
+	})
 }

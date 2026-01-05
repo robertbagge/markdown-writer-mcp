@@ -24,6 +24,10 @@ func NewOSFileReader() *OSFileReader {
 
 // Read reads the entire content of a file and returns it as a string.
 func (r *OSFileReader) Read(ctx context.Context, path string) (string, error) {
+	// Check for context cancellation before reading
+	if err := ctx.Err(); err != nil {
+		return "", err
+	}
 	content, err := os.ReadFile(path)
 	if err != nil {
 		if os.IsNotExist(err) {
