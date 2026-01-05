@@ -18,5 +18,8 @@ func RegisterAll(server *mcp.Server) error {
 	// Register json_write tool
 	mcp.AddTool(server, JSONWriteTool, JSONWriteHandler)
 
+	// Register json_query tool
+	mcp.AddTool(server, JSONQueryTool, JSONQueryHandler)
+
 	return nil
 }
